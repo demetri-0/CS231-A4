@@ -1,10 +1,25 @@
+/*
+	Author: Demetri Karras
+	Assignment Number: 4
+	Date of Submission: June 12th, 2025
+
+	File Name: sortHumans.cpp
+
+	Description:
+	This program reads lines from two input files that correspond to employees
+	and persons respectively. The data from each line is parsed, and employee
+	and person structs are created and added to their own vectors. Theses
+	vectors are sorted using functional objects based on certain attributes of
+	the structs.
+*/
+
 #include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
 
-#include "structs.h"
+#include "humanData.h"
 
 void parseEmployeeLine(string line, vector<Employee>& employees);
 void parsePersonLine(string line, vector<Person>& persons);
@@ -15,7 +30,7 @@ string getSexString(Sex sex);
 
 int main() {
 
-	cout << "Welcome to the ***********!" << endl;
+	cout << "Welcome to the Human Sorting Program!" << endl << endl;
 
 	/*
 	 * Obtains the employee input file from the user.
@@ -57,16 +72,55 @@ int main() {
 			parsePersonLine(personLine, persons);
 		}
 
-		printEmployees(employees);
+		Human sortByName(NAME);
+		Human sortByEducation(EDUCATION);
+		Human sortBySalary(SALARY);
+		Human sortBySex(SEX);
+		Human sortByAge(AGE);
+
+		vector<Employee> employeesSortedByName = sortByName(employees);
+		vector<Employee> employeesSortedByEducation = sortByEducation(employees);
+		vector<Employee> employeesSortedBySalary = sortBySalary(employees);
+
+		vector<Person> personsSortedByName = sortByName(persons);
+		vector<Person> personsSortedBySex = sortBySex(persons);
+		vector<Person> personsSortedByAge = sortByAge(persons);
+
+		cout << "*** Employees ********************************" << endl << endl;
+
+		cout << "== BY NAME ==" << endl;
+		printEmployees(employeesSortedByName);
 		cout << endl;
-		printPersons(persons);
+
+		cout << "== BY EDUCATION ==" << endl;
+		printEmployees(employeesSortedByEducation);
+		cout << endl;
+
+		cout << "== BY SALARY ==" << endl;
+		printEmployees(employeesSortedBySalary);
+		cout << endl;
+
+		cout << "*** Persons ********************************" << endl << endl;
+
+		cout << "== BY NAME ==" << endl;
+		printPersons(personsSortedByName);
+		cout << endl;
+
+		cout << "== BY SEX ==" << endl;
+		printPersons(personsSortedBySex);
+		cout << endl;
+
+		cout << "== BY AGE ==" << endl;
+		printPersons(personsSortedByAge);
+		cout << endl << endl;
+
 	}
 
 	return 0;
 }
 
 /*
- * Function Name: parseLine
+ * Function Name: parseEmployeeLine
  *
  * Input:
  * Param1(line) - the line from the input file from which data is obtained,
@@ -160,10 +214,10 @@ void parsePersonLine(string line, vector<Person>& persons) {
 	line = line.substr(indexOfComma + 1);
 
 	/*
-	 * The next comma is found in the new line string. The person's sex is
-	 * the substring between the beginning of the line string, and the new
-	 * comma, which gets converted to a valid Sex enum. The line string is
-	 * shortened again up to the first character after this comma.
+	 * The next comma is found in the new line string. The person's sex is the
+	 * substring between the beginning of the line string, and the new comma,
+	 * which gets converted to a valid Sex enum. The line string is shortened
+	 * again up to the first character after this comma.
 	 */
 	indexOfComma = line.find(',');
 	string sexStr = line.substr(0, indexOfComma);
@@ -210,7 +264,6 @@ void parsePersonLine(string line, vector<Person>& persons) {
  * and salaries in a structured format.
  */
 void printEmployees(vector<Employee>& employees) {
-	cout << "== EMPLOYEES ==" << endl;
 	for_each(employees.begin(), employees.end(), [](Employee& employee) {
 		cout << "Name: " << employee.name << " // ";
 		cout << "Education: " << getEducationString(employee.education) << " // ";
@@ -243,8 +296,19 @@ string getEducationString(Education education) {
 	return "High School";
 }
 
+/*
+ * Function Name: printPersons
+ *
+ * Input:
+ * Param1(persons) - the vector of persons to which this function applies
+ *
+ * Output: None - output is printed to the console.
+ *
+ * Description:
+ * Iterates through vector of persons, printing their names, sex, and age in a
+ * structured format.
+ */
 void printPersons(vector<Person>& persons) {
-	cout << "==PERSONS==" << endl;
 	for_each(persons.begin(), persons.end(), [](Person& person) {
 		cout << "Name: " << person.name << " // ";
 		cout << "Sex: " << getSexString(person.sex) <<  " // ";
@@ -252,6 +316,17 @@ void printPersons(vector<Person>& persons) {
 	});
 }
 
+/*
+ * Function Name: getSexString
+ *
+ * Input:
+ * Param1(sex) - the Sex enum to be converted into a string
+ *
+ * Output: A string representation of the input Sex enum.
+ *
+ * Description:
+ * Returns a string corresponding to a specified sex.
+ */
 string getSexString(Sex sex) {
 	if (sex == MALE) {
 		return "Male";
