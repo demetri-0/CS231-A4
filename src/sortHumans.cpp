@@ -8,9 +8,9 @@
 	Description:
 	This program reads lines from two input files that correspond to employees
 	and persons respectively. The data from each line is parsed, and employee
-	and person structs are created and added to their own vectors. Theses
-	vectors are sorted using functional objects based on certain attributes of
-	the structs.
+	and person structs are created and added to their own vectors. These vectors
+	are sorted using functional objects based on certain attributes of the
+	structs.
 */
 
 #include <algorithm>
@@ -53,8 +53,8 @@ int main() {
 	if (employeeInputFile.is_open() && personInputFile.is_open()) {
 
 		/*
-		 * Reads the content of the employees input file line-by-line, storing data in the
-		 * employees vector.
+		 * Reads the content of the both input files, parsing the lines and
+		 * storing the data in the appropriate vectors.
 		 */
 		string employeeLine;
 		vector<Employee> employees;
@@ -62,22 +62,25 @@ int main() {
 			parseEmployeeLine(employeeLine, employees);
 		}
 
-		/*
-		 * Reads the content of the persons input file line-by-line, storing data in the
-		 * persons vector.
-		 */
 		string personLine;
 		vector<Person> persons;
 		while (getline(personInputFile, personLine)) {
 			parsePersonLine(personLine, persons);
 		}
 
+		/*
+		 * Defines the attributes which the functional objects will sort by.
+		 */
 		Human sortByName(NAME);
 		Human sortByEducation(EDUCATION);
 		Human sortBySalary(SALARY);
 		Human sortBySex(SEX);
 		Human sortByAge(AGE);
 
+		/*
+		 * Sorts the employees and persons vectors using a copy, storing the
+		 * results in new vectors to preserve the original.
+		 */
 		vector<Employee> employeesSortedByName = sortByName(employees);
 		vector<Employee> employeesSortedByEducation = sortByEducation(employees);
 		vector<Employee> employeesSortedBySalary = sortBySalary(employees);
@@ -86,6 +89,9 @@ int main() {
 		vector<Person> personsSortedBySex = sortBySex(persons);
 		vector<Person> personsSortedByAge = sortByAge(persons);
 
+		/*
+		 * Prints each sorted vector to the console with proper labels.
+		 */
 		cout << "*** Employees ********************************" << endl << endl;
 
 		cout << "== BY NAME ==" << endl;

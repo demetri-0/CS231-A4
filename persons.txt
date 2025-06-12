@@ -1,3 +1,0 @@
-Jack Smith,M,45 
-Amy Collins,F,35 
-Bill Williams,M,34

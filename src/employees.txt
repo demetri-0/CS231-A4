@@ -1,0 +1,5 @@
+Alice Johnson,Masters,$72000
+Brian Lee,Bachelors,$55000
+Catherine Smith,Doctorate,$98000
+Daniel Brown,High_School,$42000
+Erica Davis,Masters,$67000

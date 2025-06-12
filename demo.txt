@@ -1,0 +1,70 @@
+Input File Contents:
+
+employees.txt
+Alice Johnson,Masters,$72000
+Brian Lee,Bachelors,$55000
+Catherine Smith,Doctorate,$98000
+Daniel Brown,High_School,$42000
+Erica Davis,Masters,$67000
+
+persons.txt
+George White,M,44
+Hannah Moore,F,29
+Ian Black,M,33
+Jessica Green,F,41
+Kevin Hall,M,38
+
+********************************************************************************
+Output:
+
+Welcome to the Human Sorting Program!
+
+Please enter the name of the input file for employee data: employees.txt
+
+Please enter the name of the input file for person data: persons.txt
+
+*** Employees ********************************
+
+== BY NAME ==
+Name: Alice Johnson // Education: Masters // Salary: $72000
+Name: Brian Lee // Education: Bachelors // Salary: $55000
+Name: Catherine Smith // Education: Doctorate // Salary: $98000
+Name: Daniel Brown // Education: High School // Salary: $42000
+Name: Erica Davis // Education: Masters // Salary: $67000
+
+== BY EDUCATION ==
+Name: Daniel Brown // Education: High School // Salary: $42000
+Name: Brian Lee // Education: Bachelors // Salary: $55000
+Name: Alice Johnson // Education: Masters // Salary: $72000
+Name: Erica Davis // Education: Masters // Salary: $67000
+Name: Catherine Smith // Education: Doctorate // Salary: $98000
+
+== BY SALARY ==
+Name: Daniel Brown // Education: High School // Salary: $42000
+Name: Brian Lee // Education: Bachelors // Salary: $55000
+Name: Erica Davis // Education: Masters // Salary: $67000
+Name: Alice Johnson // Education: Masters // Salary: $72000
+Name: Catherine Smith // Education: Doctorate // Salary: $98000
+
+*** Persons ********************************
+
+== BY NAME ==
+Name: George White // Sex: Male // Age: 44
+Name: Hannah Moore // Sex: Female // Age: 29
+Name: Ian Black // Sex: Male // Age: 33
+Name: Jessica Green // Sex: Female // Age: 41
+Name: Kevin Hall // Sex: Male // Age: 38
+
+== BY SEX ==
+Name: George White // Sex: Male // Age: 44
+Name: Ian Black // Sex: Male // Age: 33
+Name: Kevin Hall // Sex: Male // Age: 38
+Name: Hannah Moore // Sex: Female // Age: 29
+Name: Jessica Green // Sex: Female // Age: 41
+
+== BY AGE ==
+Name: Hannah Moore // Sex: Female // Age: 29
+Name: Ian Black // Sex: Male // Age: 33
+Name: Kevin Hall // Sex: Male // Age: 38
+Name: Jessica Green // Sex: Female // Age: 41
+Name: George White // Sex: Male // Age: 44

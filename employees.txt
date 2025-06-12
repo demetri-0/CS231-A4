@@ -1,3 +1,0 @@
-John Smith,Masters,$60000 
-Jackie Collins,Doctorate,$80000 
-Will Smith,Masters,$100000
